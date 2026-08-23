@@ -279,14 +279,14 @@ coll1, coll2 = st.columns([3, 2])
 with coll1:
     fig = go.Figure()
     # Ground line
-    fig.add_trace(
-        go.Scatter(
-            y=0,
-            line_width=3,
-            line_dash="dash",
-            name="Ground",
-        )
-    )
+fig.add_trace( go.Scatter(
+    x=[0,x_axis_limit],
+    y=[ground_height, ground_height],
+    mode="lines",
+    name="Ground",
+    line=dict(width=3, dash="dash")
+) 
+)
     # Trajectory
     fig.add_trace(
         go.Scatter(
