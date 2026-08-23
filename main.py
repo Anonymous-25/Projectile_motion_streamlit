@@ -34,15 +34,12 @@ st.sidebar.markdown('# :red[:material/simulation: Simulation Controls]', unsafe_
 st.sidebar.subheader(":material/rocket_launch: Launch configuration")
 min_speed = st.sidebar.number_input(
     "Minimum Speed (m/s)",
-    min_value=0.1,
-    max_value=10000.0,
     value=10.0,
     step=1.0
 )
 max_speed = st.sidebar.number_input(
     "Maximum Speed (m/s)",
     min_value=float(min_speed + 0.1),
-    max_value=10000.0,
     value=float(max(100.0, min_speed + 0.1)),
     step=1.0
 )
@@ -65,7 +62,7 @@ angle = st.sidebar.slider(
     min_value=0.1,
     max_value=89.9,
     value=45.0,
-    step=0.1
+    step=0.000001
 )
 # ============================================================
 # OBJECT PARAMETERS
@@ -73,15 +70,11 @@ angle = st.sidebar.slider(
 st.sidebar.subheader(":material/circle: Object")
 mass = st.sidebar.number_input(
     "Mass (kg)",
-    min_value=0.001,
-    max_value=100000.0,
     value=1.0,
     step=0.1
 )
 area = st.sidebar.number_input(
     "Cross-sectional Area (m²)",
-    min_value=0.000001,
-    max_value=10000.0,
     value=0.01,
     step=0.001,
     format="%.6f"
@@ -89,7 +82,6 @@ area = st.sidebar.number_input(
 drag_coefficient = st.sidebar.number_input(
     "Drag Coefficient (Cd)",
     min_value=0.0,
-    max_value=5.0,
     value=0.47,
     step=0.01
 )
@@ -99,24 +91,20 @@ drag_coefficient = st.sidebar.number_input(
 st.sidebar.subheader(":material/edit_location_alt: Position")
 object_height = st.sidebar.number_input(
     "Object Initial Height (m)",
-    min_value=0.0,
-    max_value=100000.0,
     value=10.0,
     step=0.1
 )
 ground_height = st.sidebar.number_input(
     "Ground Height (m)",
-    min_value=0.0,
-    max_value=100000.0,
     value=0.0,
     step=0.1
 )
 # ============================================================
 # CHECK HEIGHT
 # ============================================================
-if object_height < ground_height:
-    st.error("Object height cannot be lower than ground height.")
-    st.stop()
+# if object_height < ground_height:
+#     st.error("Object height cannot be lower than ground height.")
+#     st.stop()
 # ============================================================
 # GRAVITY
 # ============================================================
@@ -140,8 +128,6 @@ gravity_values = {
 if gravity_mode == "Custom":
     g = st.sidebar.number_input(
         "Custom Gravity (m/s²)",
-        min_value=0.01,
-        max_value=1000.0,
         value=9.81,
         step=0.01
     )
@@ -161,15 +147,11 @@ air_resistance = st.sidebar.checkbox(
 if air_resistance:
     air_density = st.sidebar.number_input(
         "Air Density (kg/m³)",
-        min_value=0.0,
-        max_value=100.0,
         value=1.225,
         step=0.001
     )
     wind_speed = st.sidebar.number_input(
         "Wind Speed (m/s)",
-        min_value=-1000.0,
-        max_value=1000.0,
         value=0.0,
         step=0.1
     )
@@ -182,15 +164,12 @@ else:
 st.sidebar.subheader(":material/timer: Simulation Limits")
 max_time_limit = st.sidebar.number_input(
     "Max Simulation Time (s)",
-    min_value=1.0,
-    max_value=100000.0,
+    min_value=0,
     value=10000.0,
     step=100.0
 )
 max_steps_limit = st.sidebar.number_input(
     "Max Step Limit",
-    min_value=1000,
-    max_value=50000000,
     value=5000000,
     step=100000
 )
