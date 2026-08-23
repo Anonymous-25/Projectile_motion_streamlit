@@ -164,7 +164,7 @@ else:
 st.sidebar.subheader(":material/timer: Simulation Limits")
 max_time_limit = st.sidebar.number_input(
     "Max Simulation Time (s)",
-    min_value=0,
+    min_value=0.0,
     value=10000.0,
     step=100.0
 )
