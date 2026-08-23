@@ -152,9 +152,21 @@ if air_resistance:
     )
     wind_speed = st.sidebar.number_input(
         "Wind Speed (m/s)",
+        min_value=0.0,
         value=0.0,
         step=0.1
     )
+    
+    wind_angle = st.sidebar.slider(
+        "Wind Direction Angle (°)",
+        -180,
+        180,
+        0,
+        1
+    )
+    
+    wind_vx = wind_speed * np.cos(np.radians(wind_angle))
+    wind_vy = wind_speed * np.sin(np.radians(wind_angle))
 else:
     air_density = 0.0
     wind_speed = 0.0
@@ -183,7 +195,9 @@ st.sidebar.markdown("[:material/globe: GitHub Repository](https://github.com/Ano
 # NUMERICAL PROJECTILE SIMULATION
 # ============================================================
 def simulate_projectile(
-    speed, angle, mass, area, cd, gravity, initial_height, ground, use_drag, air_density, wind_speed, max_time, max_steps
+    speed, angle, mass, area, cd, gravity, initial_height,
+    ground, use_drag, air_density, wind_vx, wind_vy,
+    max_time, max_steps
 ):
     theta = np.radians(angle)
     vx = speed * np.cos(theta)
@@ -194,8 +208,8 @@ def simulate_projectile(
     step = 0
     # Uses the sidebar limit inputs directly
     while y >= ground and t < max_time and step < max_steps:
-        relative_vx = vx - wind_speed
-        relative_vy = vy
+        relative_vx = vx - wind_vx
+        relative_vy = vy - wind_vy
         relative_speed = np.hypot(relative_vx, relative_vy)
         if use_drag and relative_speed > 1e-6:
             drag_force = 0.5 * air_density * cd * area * (relative_speed ** 2)
@@ -240,7 +254,8 @@ def simulate_projectile(
     ground=ground_height,
     use_drag=air_resistance,
     air_density=air_density,
-    wind_speed=wind_speed,
+    wind_vx=wind_vx,
+    wind_vy=wind_vy,
     max_time=max_time_limit,
     max_steps=max_steps_limit
 )
@@ -354,7 +369,8 @@ with coll2:
         with col2_air:
             st.metric("Air Density", f"{air_density:.3f} kg/m³")
         with col1_air:
-            st.metric("Drag Coefficient", f"{drag_coefficient:.2f}")
+            st.metric("Wind Speed", f"{wind_speed:.2f} m/s")
+            st.metric("Wind Angle", f"{wind_angle:.0f}°")
     st.subheader(":material/circle: Object & Environment")
     col1_env, col2_env = st.columns(2)
     with col1_env:
