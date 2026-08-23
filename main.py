@@ -62,7 +62,7 @@ angle = st.sidebar.slider(
     min_value=0.1,
     max_value=89.9,
     value=45.0,
-    step=0.000001
+    step=0.01
 )
 # ============================================================
 # OBJECT PARAMETERS
