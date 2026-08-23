@@ -9,8 +9,8 @@ st.set_page_config(
     page_icon="🚀",
     layout="wide",
     menu_items={
-        'Get Help': 'https://github.com/your-username/your-repository/issues',
-        'Report a bug': 'https://github.com/your-username/your-repository/issues/new',
+        'Get Help': 'https://github.com/Anonymous-25/Projectile_motion_streamlit/issues',
+        'Report a bug': 'https://github.com/Anonymous-25/Projectile_motion_streamlit/issues/new',
         'About': '''
         ### :material/rocket_launch: Projectile Motion Simulator
         This interactive simulator models 2D projectile kinematics using **Semi-Implicit Euler integration**.
@@ -199,8 +199,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("### :material/info: App Info")
 st.sidebar.caption("v2.1.0 | Built with Streamlit & Plotly")
 st.sidebar.caption("By Dhruv Meghwal (@Anonymous-25)")
-st.sidebar.markdown("[:material/globe: GitHub Repository](https://github.com/your-repo)")
-st.sidebar.markdown("[:material/docs: Documentation](https://your-docs-site.com)")
+st.sidebar.markdown("[:material/globe: GitHub Repository](https://github.com/Anonymous-25/Projectile_motion_streamlit/)")
 # ============================================================
 # NUMERICAL PROJECTILE SIMULATION
 # ============================================================
