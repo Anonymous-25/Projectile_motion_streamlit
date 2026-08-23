@@ -372,6 +372,7 @@ with coll2:
             st.metric("Air Density", f"{air_density:.3f} kg/m³")
         with col1_air:
             st.metric("Wind Speed", f"{wind_speed:.2f} m/s")
+        with col2_air:
             st.metric("Wind Angle", f"{wind_angle:.0f}°")
     st.subheader(":material/circle: Object & Environment")
     col1_env, col2_env = st.columns(2)
