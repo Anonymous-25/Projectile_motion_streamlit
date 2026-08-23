@@ -102,9 +102,9 @@ ground_height = st.sidebar.number_input(
 # ============================================================
 # CHECK HEIGHT
 # ============================================================
-# if object_height < ground_height:
-#     st.error("Object height cannot be lower than ground height.")
-#     st.stop()
+if object_height < ground_height:
+    st.error("Object height cannot be lower than ground height.")
+    st.stop()
 # ============================================================
 # GRAVITY
 # ============================================================
