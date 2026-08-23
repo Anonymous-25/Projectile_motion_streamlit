@@ -281,8 +281,7 @@ with coll1:
     # Ground line
     fig.add_trace(
         go.Scatter(
-            x=[0],
-            y=[ground_height, ground_height],
+            y=0,
             mode="lines",
             name="Ground",
             line=dict(width=3, dash="dash")
