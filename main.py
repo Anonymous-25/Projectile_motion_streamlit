@@ -282,9 +282,9 @@ with coll1:
     fig.add_trace(
         go.Scatter(
             y=0,
-            mode="lines",
+            line_width=3,
+            line_dash="dash",
             name="Ground",
-            line=dict(width=3, dash="dash")
         )
     )
     # Trajectory
