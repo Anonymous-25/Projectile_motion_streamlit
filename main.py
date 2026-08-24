@@ -347,7 +347,7 @@ with coll1:
             x=0.5
         )
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width=True)
 # ============================================================
 # MAIN RESULTS
 # ============================================================
